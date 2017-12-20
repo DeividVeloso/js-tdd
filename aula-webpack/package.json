@@ -8,8 +8,7 @@
     "watch": "npm run build -- --watch"
   },
   "keywords": [],
-  "author":
-    "Deivid Veloso <veloso.deivid@gmail.com> (http://negociodireto.com/)",
+  "author": "Deivid Veloso <veloso.deivid@gmail.com> (http://negociodireto.com/)",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -18,6 +17,8 @@
     "webpack": "^3.10.0"
   },
   "dependencies": {
-    "ramda": "^0.25.0"
+    "ramda": "^0.25.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   }
 }
