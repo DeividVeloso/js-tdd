@@ -1,28 +1,45 @@
-describe('Main', () => {
-    //roda um vez, antes do bloco
-    before(() => {
-        console.log('before')
-    })
-    ////roda um vez, depois do bloco
-    after(() => {
-        console.log('after')
-    })
+import { expect } from 'chai';
+import { sum, sub, mult, div } from '../src/main';
 
-    ////roda todas as vezes, antes de cada bloco
-    beforeEach(() => {
-        console.log('beforeEach')
-    })
+describe('Calc', () => {
+  //Smoke tests
+  describe('Smoke tests', () => {
+       it('should exist the method sum', () => {
+      expect(sum).to.exist;
+      //expect(sum).to.be.a.function;
+    });
+    it('should exist the method sub', () => {
+      expect(sub).to.exist;
+      //expect(sum).to.be.a.function;
+    });
+    it('should exist the method mult', () => {
+      expect(mult).to.exist;
+      //expect(sum).to.be.a.function;
+    });
+    it('should exist the method div', () => {
+      expect(div).to.exist;
+      //expect(sum).to.be.a.function;
+    });
+  });
 
-    ////roda todas as vezes, depois de cada bloco
-    afterEach(() => {
-        console.log('afterEach')
-    })
-
-    it('Teste 1',() => {
-
-    })
-
-     it('Teste 2',() => {
-
-    })
-})
+  describe('Sum', () => {
+    it('should return 4 when sum(2,2)', () => {
+      expect(sum(2, 2)).to.be.equal(4);
+    });
+  });
+  describe('Sub', () => {
+    it('should return 0 when sub(2,2)', () => {
+      expect(sub(2, 2)).to.be.equal(0);
+    });
+  });
+  describe('Mult', () => {
+    it('should return 4 when sum(2,2)', () => {
+      expect(mult(2, 2)).to.be.equal(4);
+    });
+  });
+  describe('div', () => {
+    it('should return 1 when sum(2,2)', () => {
+      expect(div(2, 2)).to.be.equal(1);
+    });
+  });
+});

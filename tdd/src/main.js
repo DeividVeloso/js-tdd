@@ -1,6 +1,9 @@
-const a = 3;
-const b = 2;
-const c = 'dha';
+/*
+ES6
+*/
+const sum = (n1, n2) => n1 + n2;
+const sub = (n1, n2) => n1 - n2;
+const mult = (n1, n2) => n1 * n2;
+const div = (n1, n2) => n1 / n2;
 
-const sum = () => a + b + c;
-sum();
+export { sum, sub, mult, div };
