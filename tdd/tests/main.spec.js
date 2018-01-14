@@ -1,45 +1,19 @@
 import { expect } from 'chai';
-import { sum, sub, mult, div } from '../src/main';
+import {fizzBuzz} from '../src/main';
 
-describe('Calc', () => {
-  //Smoke tests
-  describe('Smoke tests', () => {
-       it('should exist the method sum', () => {
-      expect(sum).to.exist;
-      //expect(sum).to.be.a.function;
-    });
-    it('should exist the method sub', () => {
-      expect(sub).to.exist;
-      //expect(sum).to.be.a.function;
-    });
-    it('should exist the method mult', () => {
-      expect(mult).to.exist;
-      //expect(sum).to.be.a.function;
-    });
-    it('should exist the method div', () => {
-      expect(div).to.exist;
-      //expect(sum).to.be.a.function;
-    });
+describe('Main', () => {
+  it('should return FIZZ when multiple of 3', () => {
+    expect(fizzBuzz(3)).to.be.equal("Fizz");
+  });
+  it('should return FIZZ when multiple of 5', () => {
+    expect(fizzBuzz(5)).to.be.equal("Buzz");
   });
 
-  describe('Sum', () => {
-    it('should return 4 when sum(2,2)', () => {
-      expect(sum(2, 2)).to.be.equal(4);
-    });
+  it('should return FIZZBUZZ when multiple of 3 and 5', () => {
+    expect(fizzBuzz(15)).to.be.equal("FizzBuzz");
   });
-  describe('Sub', () => {
-    it('should return 0 when sub(2,2)', () => {
-      expect(sub(2, 2)).to.be.equal(0);
-    });
-  });
-  describe('Mult', () => {
-    it('should return 4 when sum(2,2)', () => {
-      expect(mult(2, 2)).to.be.equal(4);
-    });
-  });
-  describe('div', () => {
-    it('should return 1 when sum(2,2)', () => {
-      expect(div(2, 2)).to.be.equal(1);
-    });
+
+  it('should return number when not is multiple of 3 and 5', () => {
+    expect(fizzBuzz(13)).to.be.equal(13);
   });
 });

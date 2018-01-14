@@ -1,9 +1,15 @@
 /*
 ES6
 */
-const sum = (n1, n2) => n1 + n2;
-const sub = (n1, n2) => n1 - n2;
-const mult = (n1, n2) => n1 * n2;
-const div = (n1, n2) => n1 / n2;
+const fizzBuzz = n1 => {
+  let result = '';
+  if (n1 % 3 === 0) {
+    result += 'Fizz';
+  }
+  if (n1 % 5 === 0) {
+    result += 'Buzz';
+  }
+  return result === '' ? n1 : result;
+};
 
-export { sum, sub, mult, div };
+export { fizzBuzz };
