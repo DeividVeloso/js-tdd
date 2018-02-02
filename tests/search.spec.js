@@ -12,7 +12,7 @@ import {
   searchArtists,
   searchTracks,
   searchPlaylists
-} from "../src/main";
+} from "../src/search";
 
 describe("Spotify wrapper", () => {
   let fetchedStub;
