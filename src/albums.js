@@ -13,12 +13,12 @@ export const getAlbum = id => fetch(`${API_URL}/albums/${id}`)
     data.json(),
   );
 
-export const getAlbums = ids => fetch(`${API_URL}/albums/?ids=${id}`)
+export const getAlbums = ids => fetch(`${API_URL}/albums?ids=${ids}`)
   .then(data =>
     data.json(),
   );
 
-export const getAlbumTracks = () => fetch(`${API_URL}/albums/${id}/tracks`)
+export const getAlbumTracks = (id) => fetch(`${API_URL}/albums/${id}/tracks`)
   .then(data =>
     data.json(),
   );
