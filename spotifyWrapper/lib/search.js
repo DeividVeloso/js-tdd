@@ -7,26 +7,36 @@ exports.searchPlaylists = exports.searchTracks = exports.searchArtist = exports.
 
 var _config = require('./config');
 
-var _utils = require('./utils');
+var _config2 = _interopRequireDefault(_config);
 
-/* global fetch */
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var search = exports.search = function search(query, type) {
-  return fetch(_config.API_URL + 'search?q=' + query + '&type=' + type).then(_utils.toJSON);
+  var token = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  return fetch(_config2.default + 'search?q=' + query + '&type=' + type, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
+    }
+  }).then(function (data) {
+    return data.json();
+  });
+}; /* global fetch */
+
+var searchAlbum = exports.searchAlbum = function searchAlbum(query, token) {
+  return search(query, 'album', token);
 };
 
-var searchAlbum = exports.searchAlbum = function searchAlbum(query) {
-  return search(query, 'albums');
+var searchArtist = exports.searchArtist = function searchArtist(query, token) {
+  return search(query, 'artist', token);
 };
 
-var searchArtist = exports.searchArtist = function searchArtist(query) {
-  return search(query, 'artist');
+var searchTracks = exports.searchTracks = function searchTracks(query, token) {
+  return search(query, 'tracks', token);
 };
 
-var searchTracks = exports.searchTracks = function searchTracks(query) {
-  return search(query, 'tracks');
-};
-
-var searchPlaylists = exports.searchPlaylists = function searchPlaylists(query) {
-  return search(query, 'playlist');
+var searchPlaylists = exports.searchPlaylists = function searchPlaylists(query, token) {
+  return search(query, 'playlist', token);
 };

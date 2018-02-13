@@ -70,7 +70,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -87,28 +87,38 @@ exports.searchPlaylists = exports.searchTracks = exports.searchArtist = exports.
 
 var _config = __webpack_require__(1);
 
-var _utils = __webpack_require__(2);
+var _config2 = _interopRequireDefault(_config);
 
-/* global fetch */
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var search = exports.search = function search(query, type) {
-  return fetch(_config.API_URL + 'search?q=' + query + '&type=' + type).then(_utils.toJSON);
+  var token = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+  return fetch(_config2.default + 'search?q=' + query + '&type=' + type, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      Authorization: 'Bearer ' + token
+    }
+  }).then(function (data) {
+    return data.json();
+  });
+}; /* global fetch */
+
+var searchAlbum = exports.searchAlbum = function searchAlbum(query, token) {
+  return search(query, 'album', token);
 };
 
-var searchAlbum = exports.searchAlbum = function searchAlbum(query) {
-  return search(query, 'albums');
+var searchArtist = exports.searchArtist = function searchArtist(query, token) {
+  return search(query, 'artist', token);
 };
 
-var searchArtist = exports.searchArtist = function searchArtist(query) {
-  return search(query, 'artist');
+var searchTracks = exports.searchTracks = function searchTracks(query, token) {
+  return search(query, 'tracks', token);
 };
 
-var searchTracks = exports.searchTracks = function searchTracks(query) {
-  return search(query, 'tracks');
-};
-
-var searchPlaylists = exports.searchPlaylists = function searchPlaylists(query) {
-  return search(query, 'playlist');
+var searchPlaylists = exports.searchPlaylists = function searchPlaylists(query, token) {
+  return search(query, 'playlist', token);
 };
 
 /***/ }),
@@ -121,7 +131,7 @@ var searchPlaylists = exports.searchPlaylists = function searchPlaylists(query) 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var API_URL = 'https://api.spotify.com/v1';
+var API_URL = 'https://api.spotify.com/v1/';
 exports.default = API_URL;
 
 /***/ }),
@@ -131,25 +141,9 @@ exports.default = API_URL;
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var toJSON = exports.toJSON = function toJSON(data) {
-  return data.then(function (json) {
-    return json.toJson();
-  });
-};
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
 var _search = __webpack_require__(0);
 
-var _albums = __webpack_require__(4);
+var _albums = __webpack_require__(3);
 
 module.exports = {
   getAlbum: _albums.getAlbum,
@@ -162,7 +156,7 @@ module.exports = {
 };
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -177,7 +171,7 @@ var _search = __webpack_require__(0);
 
 var _config = __webpack_require__(1);
 
-var _utils = __webpack_require__(2);
+var _utils = __webpack_require__(4);
 
 var getAlbum = exports.getAlbum = function getAlbum(id) {
   return fetch(_config.API_URL + 'albums/' + id).then(_utils.toJSON);
@@ -189,6 +183,22 @@ var getAlbums = exports.getAlbums = function getAlbums(ids) {
 
 var getAlbumTracks = exports.getAlbumTracks = function getAlbumTracks(id) {
   return fetch(_config.API_URL + 'albums/' + id + '/tracks').then(_utils.toJSON);
+};
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var toJSON = exports.toJSON = function toJSON(data) {
+  return data.then(function (json) {
+    return json.toJson();
+  });
 };
 
 /***/ })
