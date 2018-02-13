@@ -1,14 +1,6 @@
-import API_URL from '../src/config';
+import { searchAlbum } from '../src';
 
 global.fetch = require('node-fetch');
-
-const search = (query, type) => fetch(`${API_URL}search?q=${query}&type=${type}`, {
-  method: 'GET',
-  headers: {
-    Accept: 'application/json',
-    'Content-Type': 'application/json',
-    Authorization: 'Bearer BQBsfzbwCwZ2wRNtzAtmbXxUN9HU-vrnZdkr6cWkZnv5DpDBsuQy2LeJcJTkmEryWAE_qajXnjGT4kHkPk_zhGwy3OGynOVA4iED-SBqkD7luVMmch2gPPCDWZWV5bNcTEsa87p7TUrgms9UjWTPB5UFV5gKuPC-NT6dB9O4swtUhRKbgm9_3EOodv0VA6tfqY34O2U37eLAMvQjlbspq3Tt4xufDsJggma2JV7mh0pqWoyRGYk8hFKXZoKWjBBgtATQKAKVuvYCR3LRJN72yl9gpU0',
-  },
-}).then(data => data.json()).then(data => console.log(data));
-
-const albums = search('Kings of leon', 'Album');
+const token = 'BQDSAABwTzXYjNKLj1ZBPucxlAjdijp2xM_qmLHFpYzJAgk7qiXfB9lzFPGPM-4jPCsdIhWS-35qXBmynjMPh-G18CQ4QJXPnFb-K6HsM-WbtHvUDrIzVFFasA1qCbXVz4Eqh5i8G5gca1xCvlFhJwlF2rihjh5rnIZL_mqGg6nhSYuhS1oLMrvjeb7FplqpVsnxfd0CeYZ1dvVOVAQZ93Cusrj9MokkT68kKFyujA74uGg4kLUJRsm_r4NsolcDTLA-qN1P16PGtI15a_-ZJksMuPI';
+const albums = searchAlbum('Kings of leon', token);
+albums.then(data => console.log(data));

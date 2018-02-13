@@ -11,7 +11,7 @@ export const search = (query, type, token = '') => fetch(`${API_URL}search?q=${q
   },
 }).then(data => data.json());
 
-export const searchAlbum = (query, token) => search(query, 'albums', token);
+export const searchAlbum = (query, token) => search(query, 'album', token);
 
 export const searchArtist = (query, token) => search(query, 'artist', token);
 
