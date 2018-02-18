@@ -220,15 +220,18 @@ getAlbum('4aawyAB9vmqN3uQ7FjRGTy')
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
+## Versioning 2.3.1
+2 break change
+3 new feature
+1 bug
 
 We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 
-| ![Leandro Fernandes](https://avatars0.githubusercontent.com/u/10685099?s=200&v=4)|
+| ![Deivid Veloso](https://avatars1.githubusercontent.com/u/16343871?s=40&v=4)|
 |:---------------------:|
-|  [Leandro Fernandes](https://github.com/lfdo20/)   |
+|  [Deivid Veloso](https://github.com/lfdo20/)   |
 
 <!-- See also the list of [contributors](https://github.com/willianjusten/spotify-wrapper/contributors) who participated in this project. -->
 
