@@ -1,22 +1,17 @@
-import {
-  search,
-  searchAlbum,
-  searchArtist,
-  searchPlaylists,
-} from './search';
+import { search, searchAlbum, searchArtist, searchPlaylists } from './search';
 
-import {
-  getAlbum,
-  getAlbums,
-  getAlbumTracks,
-} from './albums';
+import { getAlbum, getAlbums, getAlbumTracks } from './albums';
 
-module.exports = {
-  getAlbum,
-  getAlbums,
-  getAlbumTracks,
-  search,
-  searchAlbum,
-  searchArtist,
-  searchPlaylists,
-};
+// module.exports = {
+//   getAlbum,
+//   getAlbums,
+//   getAlbumTracks,
+//   search,
+//   searchAlbum,
+//   searchArtist,
+//   searchPlaylists
+// };
+
+export default class SpotifyWrapper {
+
+}
