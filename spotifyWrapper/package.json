@@ -12,7 +12,7 @@
     "build:all": "npm run build && npm run build:umd && npm run build:umd:min",
     "test": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register",
     "test:tdd": "./node_modules/.bin/mocha tests/**/*.spec.js --require babel-register --reporter=spec --watch",
-    "lint": "./node_modules/.bin/eslint /src*.js",
+    "lint": "./node_modules/.bin/eslint /src/*.js",
     "prepush": "npm run lint && npm run test:coverage",
     "buildwp": "./node_modules/.bin/webpack --colors --progress",
     "watch": "npm run build -- --watch",

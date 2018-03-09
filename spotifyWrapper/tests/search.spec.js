@@ -7,7 +7,7 @@ import { search, searchAlbum, searchArtist, searchTracks, searchPlaylists } from
 chai.use(sinonChai);
 sinonStubPromise(sinon);
 
-// global.fetch = require('node-fetch');
+global.fetch = require('node-fetch');
 
 // Generic search with more than one type
 // Search for Albums
