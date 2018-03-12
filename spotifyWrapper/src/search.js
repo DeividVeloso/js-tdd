@@ -12,7 +12,7 @@ export const search = (query, type, token = '') =>
     }
   }).then(data => data.json());
 
-export const searchAlbum = (query, token) => search(query, 'album', token);
+export const searchAlbum = (query, token) => search(query, 'albums', token);
 
 export const searchArtist = (query, token) => search(query, 'artist', token);
 
