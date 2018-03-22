@@ -1,24 +1,30 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.getAlbumTracks = exports.getAlbums = exports.getAlbum = undefined;
+exports.default = album;
 
-var _search = require('../src/search');
+// const album = () => ({
+//   getAlbum: id => this.request(`${this.apiURL}albums/${id}`),
+//   getAlbums: ids => this.request(`${this.apiURL}albums/?ids=${ids}`),
+//   getTracks: id => this.request(`${this.apiURL}albums/${id}/tracks`)
+// });
 
-var _config = require('./config');
+// export default album;
 
-var _utils = require('./utils');
+function album() {
+  var _this = this;
 
-var getAlbum = exports.getAlbum = function getAlbum(id) {
-  return fetch(_config.API_URL + 'albums/' + id).then(_utils.toJSON);
-}; /* global fetch */
-
-var getAlbums = exports.getAlbums = function getAlbums(ids) {
-  return fetch(_config.API_URL + 'albums/?ids=' + ids).then(_utils.toJSON);
-};
-
-var getAlbumTracks = exports.getAlbumTracks = function getAlbumTracks(id) {
-  return fetch(_config.API_URL + 'albums/' + id + '/tracks').then(_utils.toJSON);
-};
+  return {
+    getAlbum: function getAlbum(id) {
+      return _this.request(_this.apiURL + "albums/" + id);
+    },
+    getAlbums: function getAlbums(ids) {
+      return _this.request(_this.apiURL + "albums/?ids=" + ids);
+    },
+    getTracks: function getTracks(id) {
+      return _this.request(_this.apiURL + "albums/" + id + "/tracks");
+    }
+  };
+}

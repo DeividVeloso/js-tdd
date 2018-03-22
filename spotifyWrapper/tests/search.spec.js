@@ -2,7 +2,8 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import sinonChai from 'sinon-chai';
 import sinonStubPromise from 'sinon-stub-promise';
-import { search, searchAlbum, searchArtist, searchTracks, searchPlaylists } from '../src/search';
+
+import SpotifyWrapper from '../src/'
 
 chai.use(sinonChai);
 sinonStubPromise(sinon);
@@ -18,8 +19,11 @@ global.fetch = require('node-fetch');
 describe('Search', () => {
   let fetchedStub;
   let promise;
-
+  let spotify;
   beforeEach(() => {
+    spotify = new SpotifyWrapper({
+      token: 'foo'
+    });
     fetchedStub = sinon.stub(global, 'fetch');
     promise = fetchedStub.returnsPromise();
   });
@@ -29,114 +33,76 @@ describe('Search', () => {
   });
 
   describe('smoke tests', () => {
-    it('should exist search in the method', () => {
-      expect(search).to.exist;
+    it('should exist spotify.search.albums in the method', () => {
+      expect(spotify.search.albums).to.exist;
     });
 
-    it('should exist searchAlbum in the method', () => {
-      expect(searchAlbum).to.exist;
+    it('should exist spotify.search.artists in the method', () => {
+      expect(spotify.search.artists).to.exist;
     });
 
-    it('should exist searchArtist in the method', () => {
-      expect(searchArtist).to.exist;
+    it('should exist spotify.search.tracks in the method', () => {
+      expect(spotify.search.tracks).to.exist;
     });
 
-    it('should exist searchTracks in the method', () => {
-      expect(searchTracks).to.exist;
-    });
-
-    it('should exist searchPlaylists in the method', () => {
-      expect(searchPlaylists).to.exist;
-    });
-  });
-
-  describe('generic search', () => {
-    it('should call fetch function', () => {
-      const artists = search();
-      expect(fetchedStub).to.have.be.calledOnce;
-    });
-
-
-    it('should call the correct url', () => {
-      context('passing one type', () => {
-        const artists = search('incubus', 'artist');
-
-        expect(fetchedStub).to.have.been
-          .calledWith('https://api.spotify.com/v1/search?q=incubus&type=artist');
-
-        const albums = search('incubus', 'album');
-        expect(fetchedStub).to.have.been
-          .calledWith('https://api.spotify.com/v1/search?q=incubus&type=album');
-      });
-      context('passing more than one type', () => {
-        const artistAndAlbums = search('incubus', ['artist', 'album']);
-
-        expect(fetchedStub).to.have.been
-          .calledWith('https://api.spotify.com/v1/search?q=incubus&type=artist');
-      });
-    });
-
-    it('should return the JSON data from the promise', () => {
-      promise.resolves({ body: 'json' });
-      const artists = search('incubus', 'artist');
-
-      expect(artists.resolveValue).to.be.eql({ body: 'json' });
-    });
-  });
-
-  describe('artist search', () => {
-    it('should call fetch function', () => {
-      const artist = searchArtist('incubus');
-      expect(fetchedStub).to.have.be.calledOnce;
-    });
-
-    it('should call the correct url', () => {
-      const artist = searchArtist('incubus');
-      expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=incubus&type=artist');
-
-      const artist2 = searchArtist('muse');
-      expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=muse&type=artist');
+    it('should exist spotify.search.playlists in the method', () => {
+      expect(spotify.search.playlists).to.exist;
     });
   });
 
   describe('albums search', () => {
     it('should call fetch function', () => {
-      const albums = searchAlbum('forest');
+      const albums = spotify.search.albums('forest');
       expect(fetchedStub).to.have.be.calledOnce;
     });
 
     it('should call the correct url', () => {
-      const albums = searchAlbum('forest');
-      expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=forest&type=albums');
+      const albums = spotify.search.albums('forest');
+      expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=forest&type=album');
+    });
+  });
+
+  describe('artist search', () => {
+    it('should call fetch function', () => {
+      const artist = spotify.search.artists('incubus');
+      expect(fetchedStub).to.have.be.calledOnce;
+    });
+
+    it('should call the correct url', () => {
+      const artist = spotify.search.artists('incubus');
+      expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=incubus&type=artist');
+
+      const artist2 = spotify.search.artists('muse');
+      expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=muse&type=artist');
     });
   });
 
   describe('tracks search', () => {
     it('should call fetch function', () => {
-      const tracks = searchTracks('windcrusher');
+      const tracks = spotify.search.tracks('windcrusher');
       expect(fetchedStub).to.have.be.calledOnce;
     });
 
     it('should call the correct url', () => {
-      const tracks = searchTracks('windcrusher');
+      const tracks = spotify.search.tracks('windcrusher');
       expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=windcrusher&type=tracks');
 
-      const tracks2 = searchTracks('oily');
+      const tracks2 = spotify.search.tracks('oily');
       expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=oily&type=tracks');
     });
   });
 
   describe('playlist search', () => {
     it('should call fetch function', () => {
-      const playlist = searchPlaylists('Sobriety');
+      const playlist = spotify.search.playlists('Sobriety');
       expect(fetchedStub).to.have.be.calledOnce;
     });
 
     it('should call the correct url', () => {
-      const playlist = searchPlaylists('Sobriety');
+      const playlist = spotify.search.playlists('Sobriety');
       expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=Sobriety&type=playlist');
 
-      const playlist2 = searchPlaylists('ramdaram');
+      const playlist2 = spotify.search.playlists('ramdaram');
       expect(fetchedStub).to.be.calledWith('https://api.spotify.com/v1/search?q=ramdaram&type=playlist');
     });
   });
