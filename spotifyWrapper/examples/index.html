@@ -15,7 +15,7 @@
   <script src="../dist/spotify-wrapper.umd.js"></script>
 
   <script>
-    const token = 'BQDSAABwTzXYjNKLj1ZBPucxlAjdijp2xM_qmLHFpYzJAgk7qiXfB9lzFPGPM-4jPCsdIhWS-35qXBmynjMPh-G18CQ4QJXPnFb-K6HsM-WbtHvUDrIzVFFasA1qCbXVz4Eqh5i8G5gca1xCvlFhJwlF2rihjh5rnIZL_mqGg6nhSYuhS1oLMrvjeb7FplqpVsnxfd0CeYZ1dvVOVAQZ93Cusrj9MokkT68kKFyujA74uGg4kLUJRsm_r4NsolcDTLA-qN1P16PGtI15a_-ZJksMuPI';
+    const token = 'BQA_Ly7ZDR1tLeD0UPmFwhHnzIR2cg2R51IfmUz1d5uNSjveCbR4teYxpeFO4orhZH58GjjobrnQSAtDa7-sLP7xVA-I6txK6QWkz-xlNgD36Jm59FFRdpe51p_uZQPYhH7sJSDhGDXcZw44G2MloJmieufa6LhbM4xcEwZevH4WYNsGObGlU-ZMvQC5A-JetBLqSDHwhLgLCkaNnz3He2wz_1MowH_oGIMi185ROUxmZP8KcRs-fLiizkg4oQGbT0r1C8T5V8PKbk_mbIBB0cmz8RU';
     const albums = spotifyWrapper.searchAlbum('Kings Of Leon', token);
     const albumsEl = document.getElementById('albums');
     albums.then(data => {
@@ -25,7 +25,6 @@
 
       albumsEl.innerHTML = markup;
     })
-
   </script>
 </body>
 </html>
