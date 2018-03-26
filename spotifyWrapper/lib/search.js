@@ -10,7 +10,7 @@ function searcher(type, query) {
 
 function search() {
   return {
-    albums: searcher.bind(this, 'albums'),
+    albums: searcher.bind(this, 'album'),
     artists: searcher.bind(this, 'artist'),
     tracks: searcher.bind(this, 'tracks'),
     playlists: searcher.bind(this, 'playlist')

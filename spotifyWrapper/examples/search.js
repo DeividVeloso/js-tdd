@@ -3,7 +3,7 @@ import SpotifyWrapper from '../src';
 global.fetch = require('node-fetch');
 
 const token =
-  'BQDJtmCazkwuOJ7pKOOjkTWq3b9v1J6zG5EuS-DVMYE0sTcUWna5Y3O-tU3QHj52-mjyWPXHIoYxDFOhxtOl4fQr3HKUfvUXhOKFAq5LqQRTKJ2wszbWzNA3KUUsftUz8jwsAa-DaFzYrmwBhdOGGl9cegv7S0Bimz7lHqf1YaZhKvYtGH-4FBH5FlFta35Wg9VKbfYQ0AzUt1QoEdu_gPV18vpctDof3zN-rgTWTnKWEN5qLiwIxnlLeEGKfJJAtAao-Zj2KwxgZmgFJmMO4qF-UYQ';
+  'BQAqWtknzxSKNaUp0k7K0oyx9K7_2gw-bZLwNvvr0qTT_XdN8Wbn1lDtaDAV1TvgnXLkfYJIq4flypnygshxUI_SLXxXHRQBd_-92B7Xa1Q6q9y_CsX72NJAnukj1lEXpVd7lR6ndDEr8q8Yki3h0kLMScV7sxhlZD7SoXZTWFWgwPnVj3rhlGtF1d_K86X4vzjglY-KSyv27uxQriPZjS6IzEqROKxBNRUhjGQTtxwnGsP3S-s8bUYRpGSIobCDAaHf8hp1YyvL4cZTyhLIcixa7XY';
 const spotify = new SpotifyWrapper({
   token
 });

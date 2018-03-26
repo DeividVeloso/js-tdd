@@ -15,8 +15,11 @@
   <script src="../dist/spotify-wrapper.umd.js"></script>
 
   <script>
-    const token = 'BQA_Ly7ZDR1tLeD0UPmFwhHnzIR2cg2R51IfmUz1d5uNSjveCbR4teYxpeFO4orhZH58GjjobrnQSAtDa7-sLP7xVA-I6txK6QWkz-xlNgD36Jm59FFRdpe51p_uZQPYhH7sJSDhGDXcZw44G2MloJmieufa6LhbM4xcEwZevH4WYNsGObGlU-ZMvQC5A-JetBLqSDHwhLgLCkaNnz3He2wz_1MowH_oGIMi185ROUxmZP8KcRs-fLiizkg4oQGbT0r1C8T5V8PKbk_mbIBB0cmz8RU';
-    const albums = spotifyWrapper.searchAlbum('Kings Of Leon', token);
+    const token = 'BQAqWtknzxSKNaUp0k7K0oyx9K7_2gw-bZLwNvvr0qTT_XdN8Wbn1lDtaDAV1TvgnXLkfYJIq4flypnygshxUI_SLXxXHRQBd_-92B7Xa1Q6q9y_CsX72NJAnukj1lEXpVd7lR6ndDEr8q8Yki3h0kLMScV7sxhlZD7SoXZTWFWgwPnVj3rhlGtF1d_K86X4vzjglY-KSyv27uxQriPZjS6IzEqROKxBNRUhjGQTtxwnGsP3S-s8bUYRpGSIobCDAaHf8hp1YyvL4cZTyhLIcixa7XY';
+    const spotify = new SpotifyWrapper({
+      token
+    });
+    const albums = spotify.search.albums('Kings Of Leon');
     const albumsEl = document.getElementById('albums');
     albums.then(data => {
       markup = data.albums.items.map(item =>
