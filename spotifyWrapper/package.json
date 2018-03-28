@@ -1,8 +1,8 @@
 {
-  "name": "jstdd-spotify-Wrapper",
-  "version": "1.0.0",
+  "name": "spotify-wrapper-veloso",
+  "version": "1.0.1",
   "description": "Curso JSTDD - Simple wrapper for Spotify API.",
-  "main": "./src/index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "clear": "rimraf lib",
     "build": "./node_modules/.bin/babel --out-dir lib src",
@@ -19,6 +19,10 @@
     "server": "./node_modules/.bin/webpack-dev-server --inline --open",
     "test:coverage": "nyc npm test"
   },
+  "files": [
+    "dist",
+    "lib"
+  ],
   "nyc": {
     "functions": 80,
     "lines": 80,
