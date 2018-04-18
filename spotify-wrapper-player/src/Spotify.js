@@ -1,7 +1,7 @@
 import SpotifyWrapper from 'spotify-wrapper-veloso';
 
 const Spotify = new SpotifyWrapper({
-  token: 'Token'
+  token: 'BQA7uv0qPAudemOTRBB2ja1r5m6FGV9PhUiyWDslMGFZ2_BcznGSoaJX4XfTlFZF5_zcA2FbJEMj5l046GPOlgJ0ptANF3OQ10sTcAXIKcsQg4v783SKoEu15bnVfzqvp-9wq2EZl5aO8uBdMJGyG0MBmBu1Q-BmwzCKH72_nMhgeutOtbGmx_qOd99xLRHrF_Y2m1WSbWnPMmsbAC6bxayXxpeFllpALqkKX6MeTAmE9qgv-pHuCOGqnZDvc5tzWFUE_vv5Fy8rLq7IEFWWA_AbUKY'
 });
 
 export default Spotify;
