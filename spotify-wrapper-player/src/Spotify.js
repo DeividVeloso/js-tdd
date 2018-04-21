@@ -1,7 +1,7 @@
 import SpotifyWrapper from 'spotify-wrapper-veloso';
 
 const Spotify = new SpotifyWrapper({
-  token: 'BQA0SnuTc_ZG7yNg5GozskckCETpYVRmYVg-WFA-HA3JGSeesNyh2tBL1ytpDV-bLlmv_TrQuAy4QgOQe2cwzv6NnvZaJIkPHH5MtB4dZRRgCODdd9YeZmfbDbQ6fbwh_5RG2I3u8LIy-Qc6Gl9WeNX__mQ6HaWzwaExjHr4v2Qo-Xxo5kzCZ-uo6kMfGQqmKAaEug7EUzWvZcel3osX4jzIlAxbdr8ZuggPdPB4ao5BlLKzT6xVs30CaQhqNTYy3tG-C5fJpwPR1QzTklaHao9UCA8'
+  token: 'BQDbPMFFisT76OtgxJCtChx_JDS-ToGuFoANwL3ea9lZbh5Q6flJbBuEb0SAek_BwP7zqZYzoNnxwWmqM_8U-g-mxU7-XJ9VRA6xbMEVhCdqbeAiV3AGjfpIYSHAM6S1TJeK7Yz_4bmaQv7n9-4W0g2vKDlu_z7GIZK2lzZe-wZS2JFkUtDl-tlHLoCWu-fiE9MWMo6HeGjSbe87l4zUF0GHkDYJI5UNw-LHcK42Hrl6_RXZwYWkdxeMYbKM3dG3N-2W67ZsXEt5e2EstAWh57WatoU'
 });
 
 export default Spotify;
