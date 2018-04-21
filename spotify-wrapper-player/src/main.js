@@ -1,22 +1,22 @@
 import spotify from './Spotify';
 import renderAlbums from './AlbumList'
 import renderAlbumInfo from './AlbumInfo'
+import renderAlbumTracks from './AlbumTracks'
 
-const albums = spotify.search.albums('Kings of leon');
-//Pegando o a div list do index.html
+
 const albumList = document.getElementById('album-list');
-
+const albums = spotify.search.albums('Kings of leon');
 albums.then(data => {
     return renderAlbums(data.albums.items, albumList)
 })
-
 
 //Pegando o album Info
 const album = spotify.album.getAlbum('3DxR2xJJfAGJlbArx7wAgm');
 const albumInfo = document.getElementById('album-info');
 
-album.then(data => {
-    console.log(data);
-    return renderAlbumInfo(data, albumInfo)
-})
+const albumTracks = document.getElementById('album-musics-tracks');
+album
+.then(data => renderAlbumInfo(data, albumInfo)) // Pegando album info
+.then(data => renderAlbumTracks(data, albumTracks)) //Pegando album tracks
+
 
