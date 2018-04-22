@@ -2,6 +2,7 @@ import "jsdom-global/register";
 
 import { expect } from "chai";
 import renderAlbumTracks from "../src/AlbumTracks";
+import convertToHumanTime from '../src/ConvertToHumanTime'
 
 describe("AlbumTracks", () => {
   const data = [{
@@ -15,7 +16,7 @@ describe("AlbumTracks", () => {
     <div class="music" data-track-preview="http://">
         <p class="music-number">1</p>
         <p class="music-title">Xoxo</p>
-        <p class="music-duration">207959</p>
+        <p class="music-duration">${convertToHumanTime(207959)}</p>
     </div>`;
 
   it("should create and append the markup given a correct data", () => {
@@ -41,12 +42,12 @@ describe("AlbumTracks", () => {
     <div class="music" data-track-preview="http://">
         <p class="music-number">1</p>
         <p class="music-title">Xoxo</p>
-        <p class="music-duration">207959</p>
+        <p class="music-duration">${convertToHumanTime(207959)}</p>
     </div>
     <div class="music" data-track-preview="http://">
         <p class="music-number">1</p>
         <p class="music-title">Xoxo</p>
-        <p class="music-duration">207959</p>
+        <p class="music-duration">${convertToHumanTime(207959)}</p>
     </div>`;
 
 it("should create and append the markup when more than one", () => {
