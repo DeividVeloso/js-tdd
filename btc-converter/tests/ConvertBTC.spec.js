@@ -1,4 +1,5 @@
 const nock = require('nock');
+const chalk = require('chalk');
 const chai = require('chai');
 const sinon = require('sinon');
 const sinonChai = require('sinon-chai');
@@ -35,7 +36,7 @@ describe('ConvertBTC', () => {
 
          await convertBTC();
 
-        expect(consoleStub).to.have.been.calledWith('1 BTC to USD = 9919.13');
+        expect(consoleStub).to.have.been.calledWith(`${chalk.red(1)} BTC to ${chalk.cyan('USD')} = ${chalk.yellow('9919.13')}`);
 
     })
 
@@ -48,7 +49,7 @@ describe('ConvertBTC', () => {
 
          await convertBTC('USD', 10);
 
-        expect(consoleStub).to.have.been.calledWith('10 BTC to USD = 9919.13');
+        expect(consoleStub).to.have.been.calledWith(`${chalk.red(10)} BTC to ${chalk.cyan('USD')} = ${chalk.yellow('9919.13')}`);
 
     });
 
@@ -61,7 +62,7 @@ describe('ConvertBTC', () => {
 
          await convertBTC('BRL');
 
-        expect(consoleStub).to.have.been.calledWith('1 BTC to BRL = 9919.13');
+        expect(consoleStub).to.have.been.calledWith(`${chalk.red(1)} BTC to ${chalk.cyan('BRL')} = ${chalk.yellow('9919.13')}`);
 
     });
 
@@ -75,7 +76,7 @@ describe('ConvertBTC', () => {
       
          await convertBTC('BRL');
 
-        expect(consoleStub).to.have.been.calledWith('Something went wrong in the API. Try in a few minutes');
+        expect(consoleStub).to.have.been.calledWith(chalk.red('Something went wrong in the API. Try in a few minutes'));
 
     });
 });
