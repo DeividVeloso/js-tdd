@@ -20,7 +20,7 @@ describe('ConvertBTC', () => {
     };
 
     beforeEach(() => {
-        consoleStub = sinon.stub(console, 'log');
+        consoleStub = sinon.stub(console, 'info');
     })
 
     afterEach(() => {
