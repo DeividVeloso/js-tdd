@@ -50,6 +50,32 @@ describe('ConvertBTC', () => {
 
         expect(consoleStub).to.have.been.calledWith('10 BTC to USD = 9919.13');
 
-    })
+    });
 
+    it('should use currency BRL and 1 as amount', async () => {
+        //https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=2
+         nock('https://apiv2.bitcoinaverage.com')
+            .get('/convert/global')
+            .query({ from: 'BTC', to: 'BRL', amount: 1 })
+            .reply(200, responseMock);
+
+         await convertBTC('BRL');
+
+        expect(consoleStub).to.have.been.calledWith('1 BTC to BRL = 9919.13');
+
+    });
+
+
+    it('should message user when api reply with error', async () => {
+        //https://apiv2.bitcoinaverage.com/convert/global?from=BTC&to=USD&amount=2
+         nock('https://apiv2.bitcoinaverage.com')
+            .get('/convert/global')
+            .query({ from: 'BTC', to: 'BRL', amount: 1 })
+            .replyWithError('error');
+      
+         await convertBTC('BRL');
+
+        expect(consoleStub).to.have.been.calledWith('Something went wrong in the API. Try in a few minutes');
+
+    });
 });
